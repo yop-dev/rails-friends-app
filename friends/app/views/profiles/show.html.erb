@@ -1,0 +1,8 @@
+<h1>My Profile</h1>
+
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+
+<%= link_to "Edit Profile", edit_profile_path, class: "btn btn-warning" %>
+<%= link_to "Back", friends_path, class: "btn btn-secondary" %>
+

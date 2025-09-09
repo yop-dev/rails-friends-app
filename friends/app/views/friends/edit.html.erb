@@ -1,5 +1,43 @@
 <h1>Edit Friend</h1>
 
-<%= render "form", friend: @friend %>
+<%= form_with(model: @friend, local: true, html: { multipart: true }) do |form| %>
+  <% if @friend.image.attached? %>
+    <div class="mb-3">
+      <p>Current Image:</p>
+      <%= image_tag @friend.image, class: "img-thumbnail", style: "max-width: 200px;" %>
+    </div>
+  <% end %>
 
-<%= link_to "Back", friends_path, class: "btn btn-secondary" %>
+  <div class="mb-3">
+    <%= form.label :image %>
+    <%= form.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :twitter %>
+    <%= form.text_field :twitter, class: "form-control" %>
+  </div>
+
+  <%= form.submit "Update Friend", class: "btn btn-primary" %>
+  <%= link_to "Back", friends_path, class: "btn btn-secondary" %>
+<% end %>

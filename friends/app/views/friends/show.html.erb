@@ -1,5 +1,13 @@
 <h1><%= @friend.first_name %> <%= @friend.last_name %></h1>
 
+<% if @friend.image.attached? %>
+  <p>
+    <%= image_tag @friend.image, width: 200, class: "img-thumbnail mb-3" %>
+  </p>
+<% else %>
+  <p><em>No image uploaded</em></p>
+<% end %>
+
 <p><strong>Email:</strong> <%= @friend.email %></p>
 <p><strong>Phone:</strong> <%= @friend.phone %></p>
 <p><strong>Twitter:</strong> <%= @friend.twitter %></p>
